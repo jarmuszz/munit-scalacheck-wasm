@@ -14,6 +14,8 @@ def junitVersion = "4.13.2"
 
 def munitVersion = "1.3.0-WASM"
 
+ThisBuild / resolvers += "central-snapshots" at "https://central.sonatype.com/repository/maven-snapshots/"
+
 inThisBuild(
   List(
     // version is set dynamically by sbt-dynver, but let's adjust it
