@@ -19,7 +19,7 @@ ThisBuild / resolvers += "central-snapshots" at "https://central.sonatype.com/re
 inThisBuild(
   List(
     // version is set dynamically by sbt-dynver, but let's adjust it
-    version := "1.2.0-WASM",
+    version := "1.3.0-WASM",
     organization := "org.scalameta",
     homepage := Some(url("https://github.com/scalameta/munit")),
     licenses := List(
