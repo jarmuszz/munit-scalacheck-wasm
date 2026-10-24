@@ -1,11 +1,6 @@
 import com.typesafe.tools.mima.core._
+import Extensions._
 import scala.collection.mutable
-
-def scala213 = "2.13.18"
-
-def scala212 = "2.12.21"
-
-def scala3 = "3.3.8"
 
 def junitVersion = "4.13.2"
 
@@ -71,12 +66,8 @@ val isScala3Setting = Def.setting {
 
 def isScala3(v: Option[(Long, Long)]): Boolean = v.exists(_._1 == 3)
 
-// NOTE(olafur): disable Scala.js and Native settings for IntelliJ.
 def onOtherPlatform(except: AutoPlugin*): Project => Project =
-  _.disablePlugins(MimaPlugin +: except: _*).settings(
-    SettingKey[Boolean]("ide-skip-project")
-      .withRank(KeyRanks.Invisible) := true
-  )
+  _.disablePlugins(MimaPlugin +: except: _*)
 val onJS: Project => Project = onOtherPlatform()
 val onNative: Project => Project = onOtherPlatform(ScalafixPlugin)
 
@@ -121,14 +112,14 @@ lazy val munitScalacheck = projectMatrix
     sharedSettings,
     unmanagedMainSources(munitScalacheckName, "shared"),
     libraryDependencies ++= Seq(
-      "org.scalacheck" %% "scalacheck" % "1.19.0-66-3b1e58f-SNAPSHOT",
+      "org.scalacheck" %% "scalacheck" % "1.20.0-WASM",
       "org.scalameta" %% "munit-diff" % munitVersion,
       "org.scalameta" %% "munit" % munitVersion
     )
   )
-  .jvmPlatform(allScalaVersions, mimaEnable)
-  .jsPlatform(allScalaVersions, Nil, onJS)
-  .nativePlatform(allScalaVersions, Nil, onNative)
+  .crossJvm(allScalaVersions, ss = mimaEnable)()
+  .crossJs(allScalaVersions)(onJS)
+  .crossNative(allScalaVersions)(onNative)
 
 def testsJVMSettings = Def.settings(
   fork := true,
@@ -162,9 +153,9 @@ lazy val tests = projectMatrix
     ),
     publish / skip := true
   )
-  .jvmPlatform(allScalaVersions, testsJVMSettings)
-  .jsPlatform(allScalaVersions, Nil, testsOnJS)
-  .nativePlatform(allScalaVersions, Nil, onNative)
+  .crossJvm(allScalaVersions, ss = testsJVMSettings)()
+  .crossJs(allScalaVersions)(testsOnJS)
+  .crossNative(allScalaVersions)(onNative)
   .disablePlugins(MimaPlugin)
 
 Global / excludeLintKeys ++= Set(

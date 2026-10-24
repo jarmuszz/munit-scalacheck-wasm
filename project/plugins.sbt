@@ -2,7 +2,7 @@ addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.12.1")
 
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.6.2")
 
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.14.7")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.14.8")
 
 addSbtPlugin("io.github.scala-wasm" % "sbt-scalajs" % "1.22.0-wasm.4")
 
@@ -15,6 +15,6 @@ libraryDependencies += ("org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.1.1")
 
 addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.12")
 
-addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.1.6")
+addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.2.1")
 
-addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.13.1")
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.13.2")
