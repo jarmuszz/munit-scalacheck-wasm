@@ -9,7 +9,7 @@ def munitVersion = "1.3.6-WASM"
 inThisBuild(
   List(
     // version is set dynamically by sbt-dynver, but let's adjust it
-    version := "1.3.0-WASM",
+    version := "1.3.1-WASM",
     organization := "org.scalameta",
     homepage := Some(url("https://github.com/scalameta/munit")),
     licenses := List(
