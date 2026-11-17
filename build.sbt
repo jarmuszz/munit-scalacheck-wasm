@@ -4,9 +4,7 @@ import scala.collection.mutable
 
 def junitVersion = "4.13.2"
 
-def munitVersion = "1.3.5-WASM"
-
-ThisBuild / resolvers += "central-snapshots" at "https://central.sonatype.com/repository/maven-snapshots/"
+def munitVersion = "1.3.6-WASM"
 
 inThisBuild(
   List(

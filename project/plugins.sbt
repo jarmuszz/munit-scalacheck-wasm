@@ -4,7 +4,7 @@ addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.6.2")
 
 addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.14.8")
 
-addSbtPlugin("io.github.scala-wasm" % "sbt-scalajs" % "1.22.0-wasm.4")
+addSbtPlugin("io.github.scala-wasm" % "sbt-scalajs" % "1.22.1-wasm.6")
 
 libraryDependencies += ("org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.1.1")
   // published for 2.13 only, and sbt-scalajs already brings its _3 transitives
